@@ -22,14 +22,14 @@ if(isset($_SESSION['u_usuario'])){
      <div>
         <ul class="navbar nav  ml-auto" >    
             <li class="nav-item">
-              <a class="navbar-brand nav-link" href="../Priyecto/usuarios.php">
+              <a class="navbar-brand nav-link" href="../Proyecto/administrador.php">
                 PRINCIPAL 
             </a> 
             </li>
-            <!-- <li class="nav-item">
-              <a class="navbar-brand nav-link" href="producto.php">       PRODUCTOS 
+            <li class="nav-item">
+              <a class="navbar-brand nav-link" href="usuarios/crearUsuarios.php"> CREAR USUARIOS 
               </a>
-            </li> -->
+            </li>
            
             <!-- <li class="nav-item">
               <a class="navbar-brand nav-link" href="historial.php">HISTORIAL</a>

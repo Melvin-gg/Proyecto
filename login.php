@@ -5,7 +5,7 @@ include("conexion.php");
 if(!empty($_POST['correo']) && !empty($_POST['clave'])){
 $correo = $_POST['correo'];
 $clave = $_POST['clave'];
-//$tipo_usuario = $_POST['tipo_usuario'];
+
 $sql ="SELECT * FROM usuarios WHERE correo='$correo' AND clave='$clave'";
 $query=mysqli_query($db, $sql);
 if($resultado=mysqli_fetch_array($query)){
