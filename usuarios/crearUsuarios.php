@@ -8,7 +8,12 @@ if(isset($_SESSION['u_usuario'])){
   header("location: ../index.html");
 }
 ?>
-
+<?php
+$usuario= $_SESSION['u_usuario'];
+$proceso=mysqli_query($db, "SELECT * FROM usuarios WHERE correo='$usuario'  " );
+$resultado=mysqli_fetch_array($proceso);
+$administrador= $resultado['nombre']; 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,18 +64,22 @@ if(isset($_SESSION['u_usuario'])){
                  <a class="navbar-brand nav-link " href="principal.php">
                 </a>
                 </li>
+                <li class="nav-item"><a class=" navbar-brand nav-link" ><i>BIENVENIDO: <?php echo $administrador  ?></i></a></li>
+                </li>
        <li class="nav-item">
-        <a class=" navbar-brand nav-link" href="../usuarios/crearUsuarios.php">
-           CREAR USUARIOS
-            </a>
+          <a class=" navbar-brand nav-link" href="../usuarios/crearUsuarios.php">
+            USUARIOS
+          </a>
          </li>
-         <li class="nav-item"><a class=" navbar-brand nav-link" href="../administrador.php"><i class="material-icons">REGRESAR</i></a></li>
-                <li class="nav-item"><a class=" navbar-brand nav-link" href="finalizar.php"><i class="material-icons">SALIR exit_to_app</i></a></li>
-                </ul>
+              <li class="nav-item"><a class=" navbar-brand nav-link" href="../administrador.php"><i class="material-icons">REGRESAR</i></a></li>
+                <li class="nav-item"><a class=" navbar-brand nav-link" href="../finalizar.php"><i class="material-icons">SALIR exit_to_app</i></a>
+              </li>
+          </ul>
         </div>
+
+
        </div>
         </nav>
-
 <div class="container pt-4" >
 
 <div class="row">
@@ -87,7 +96,7 @@ if(isset($_SESSION['u_usuario'])){
 <input type="email"  class="form-control"  name="correo"  placeholder="correo " autofocus="on" required>
 </div>
 <div  class="form-group">
-<input type="text"  class="form-control"  name="clave"  placeholder="clave" required>
+<input type="password"  class="form-control"  name="clave"  placeholder="clave" required>
 </div>
 <div  class="form-group">
 <input type="text"  class="form-control"  name="nombre"  placeholder="nombre"  required>
@@ -134,10 +143,12 @@ if(isset($_SESSION['u_usuario'])){
 $mostrar=mysqli_query($db,"select * from usuarios");
 
 while($registro = mysqli_fetch_array($mostrar)){
+  // Ofuscar la clave con asteriscos
+  $claveOfuscada = str_repeat('*', strlen($registro['clave']));
 ?>
    <tr>
     <td><?php echo   $registro['correo'] ;?></td>
-    <td><?php echo   $registro['clave'] ;?></td>
+    <td><?php echo   $claveOfuscada;?></td>
     <td><?php echo   $registro['nombre'] ;?></td>
     <td><?php echo   $registro['tipo_usuario'] ;?></td>
     <td><a  href="eliminar_usuario.php?id=<?php echo $registro['id'] ?>"><i style="color:white;" class="material-icons" >delete</i></a></td>

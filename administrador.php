@@ -27,7 +27,7 @@ if(isset($_SESSION['u_usuario'])){
             </a> 
             </li>
             <li class="nav-item">
-              <a class="navbar-brand nav-link" href="usuarios/crearUsuarios.php"> CREAR USUARIOS 
+              <a class="navbar-brand nav-link" href="usuarios/crearUsuarios.php"> USUARIOS 
               </a>
             </li>
            
