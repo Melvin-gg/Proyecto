@@ -1,2 +1,12 @@
 git config --global user.name "Melvin"
 git config --global user.email "mespinog@miumg.edu.gt"
+
+//comandos para subir codigo
+git add .
+git commit -m "Tu comentario"
+git push
+
+
+//comando para descargar cambios
+git pull
+
