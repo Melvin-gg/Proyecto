@@ -26,10 +26,10 @@ if(isset($_SESSION['u_usuario'])){
                 PRINCIPAL 
             </a> 
             </li>
-            <!-- <li class="nav-item">
-              <a class="navbar-brand nav-link" href="producto.php">       PRODUCTOS 
+             <li class="nav-item">
+              <a class="navbar-brand nav-link" href="mantenimiento/crearMantenimiento.php">       CREAR MANTENIMIENTO 
               </a>
-            </li> -->
+            </li> 
            
             <!-- <li class="nav-item">
               <a class="navbar-brand nav-link" href="historial.php">HISTORIAL</a>
