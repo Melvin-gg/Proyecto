@@ -68,8 +68,8 @@ $administrador = $resultado['nombre'];
           <li class="nav-item"><a class=" navbar-brand nav-link"><i>BIENVENIDO: <?php echo $administrador  ?></i></a></li>
           </li>
           <li class="nav-item">
-            <a class=" navbar-brand nav-link" href="../usuarios/crearUsuarios.php">
-              USUARIOS
+            <a class=" navbar-brand nav-link" href="../mantenimiento/verMantenimiento.php">
+              VER MANTENIMIENTO 
             </a>
           </li>
           <li class="nav-item"><a class=" navbar-brand nav-link" href="../usuarios.php"><i class="material-icons">REGRESAR</i></a></li>

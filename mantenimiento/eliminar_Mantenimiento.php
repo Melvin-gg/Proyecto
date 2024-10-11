@@ -3,9 +3,9 @@
 include ("../conexion.php");
 
 $id=$_GET['id'];
-$db->query("DELETE FROM  usuarios WHERE id='$id'");
+$db->query("DELETE FROM  mantenimiento WHERE id='$id'");
  
-header("Location: crearUsuarios.php");
+header("Location: verMantenimiento.php");
 
 
 ?>
