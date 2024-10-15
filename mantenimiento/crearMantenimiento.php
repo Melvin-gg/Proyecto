@@ -12,6 +12,7 @@ $usuario = $_SESSION['u_usuario'];
 $proceso = mysqli_query($db, "SELECT * FROM usuarios WHERE correo='$usuario'  ");
 $resultado = mysqli_fetch_array($proceso);
 $administrador = $resultado['nombre'];
+$id_usuario = $resultado['id'];
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +93,16 @@ $administrador = $resultado['nombre'];
 
             <form action="insertar_Mantenimiento.php" method="POST" autocomplete="off">
               <div class="form-group">
-                <input type="text" class="form-control" name="nombre_equipo" placeholder="Nombre de Maquinaria " autofocus="on" required>
+              <label>Selecciona nombre de maquinaria </label> <br>
+              <select name="nombre_equipo" id="nombre_equipo" required>
+                <?php
+                // Generar opciones dinámicas desde la consulta
+                  $mostrar = mysqli_query($db, "SELECT * FROM maquinarias");
+                  while ($registro = mysqli_fetch_array($mostrar)) {
+                    echo "<option value='" . $registro['nombre'] . "'>" . $registro['nombre'] . "</option>";
+                  }
+                ?>
+              </select>
               </div>
               <div class="form-group">
                 <input type="text" class="form-control" name="descripcion" placeholder="Descripción" required>
@@ -132,6 +142,9 @@ $administrador = $resultado['nombre'];
               </div>
               <div class="form-group">
                 <input type="text" class="form-control" name="comentario" placeholder="Comentario" >
+              </div>
+              <div  class="form-group">
+                <input type="number"  class="form-control"  name="id_usuario" value="<?php echo   $id_usuario ;?>"  placeholder="id_usuario" readonly >
               </div>
               <div class="form-group">
                 <button type="submit" class="btn btn-secondary btn-block"><i class="material-icons">CREAR</i></button>

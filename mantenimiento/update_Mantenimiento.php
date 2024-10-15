@@ -8,6 +8,13 @@ if(isset($_SESSION['u_usuario'])){
   header("location: ../index.html");
 }
 ?>
+<?php
+$usuario = $_SESSION['u_usuario'];
+$proceso = mysqli_query($db, "SELECT * FROM usuarios WHERE correo='$usuario'  ");
+$resultado = mysqli_fetch_array($proceso);
+$administrador = $resultado['nombre'];
+$id_usuario = $resultado['id'];
+?>
 
 
 <!DOCTYPE html>
@@ -31,9 +38,12 @@ if(isset($_SESSION['u_usuario'])){
                  <a class="navbar-brand nav-link " href="principal.php">
                 </a>
                 </li>
-         <li class="nav-item"><a class=" navbar-brand nav-link" href="crearUsuarios.php"><i class="material-icons">REGRESAR</i></a></li>
+            </li>
+                <li class="nav-item"><a class=" navbar-brand nav-link"><i>BIENVENIDO: <?php echo $administrador  ?></i></a></li>
+            </li>
+            <li class="nav-item"><a class=" navbar-brand nav-link"  href="verMantenimiento.php"><i class="material-icons">REGRESAR</i></a></li>
                 <li class="nav-item"><a class=" navbar-brand nav-link" href="finalizar.php"><i class="material-icons">SALIR exit_to_app</i></a></li>
-                </ul>
+            </ul>
         </div>
        </div>
 </nav>
@@ -89,6 +99,9 @@ while($registro = mysqli_fetch_array($mostrar)){
                         </div>
                         <div  class="form-group">
                             <input type="number"  class="form-control"  name="id" value="<?php echo   $registro['id'] ;?>"  placeholder="id" readonly >
+                        </div>
+                        <div  class="form-group">
+                            <input type="number"  class="form-control"  name="id_usuario" value="<?php echo   $id_usuario ;?>"  placeholder="id_usuario" readonly >
                         </div>
                         <div class="form-group">
                             <button type="submit"  class="btn btn-secondary btn-block" ><i class="material-icons">ACTUALIZAR</i></button>

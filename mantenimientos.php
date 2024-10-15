@@ -1,5 +1,5 @@
 <?php
-include("../conexion.php");
+include("conexion.php");
 session_start();
 
 if (isset($_SESSION['u_usuario'])) {
@@ -68,8 +68,7 @@ $id_usuario = $resultado['id'];
           </li>
           <li class="nav-item"><a class=" navbar-brand nav-link"><i>BIENVENIDO: <?php echo $administrador  ?></i></a></li>
           </li>
-          <li class="nav-item"><a class=" navbar-brand nav-link" href="../mantenimiento/crearMantenimiento.php"><i class="material-icons">REGRESAR</i></a></li>
-          <li class="nav-item"><a class=" navbar-brand nav-link" href="../finalizar.php"><i class="material-icons">SALIR exit_to_app</i></a>
+          <li class="nav-item"><a class=" navbar-brand nav-link" href="administrador.php"><i class="material-icons">REGRESAR</i></a></li>
           </li>
         </ul>
       </div>
@@ -107,7 +106,7 @@ $id_usuario = $resultado['id'];
 
               <?php
 
-              $mostrar = mysqli_query($db, "select * from mantenimiento WHERE id_usuario='$id_usuario'");
+              $mostrar = mysqli_query($db, "select * from mantenimiento");
 
               while ($registro = mysqli_fetch_array($mostrar)) {
               ?>

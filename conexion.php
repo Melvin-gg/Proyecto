@@ -1,6 +1,6 @@
 <?php 
 $host="localhost";
-$basedatos="proyecto";
+$basedatos="proyecto5";
 $usuario="root";
 $contrasena="root";
 
