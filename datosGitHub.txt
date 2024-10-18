@@ -9,3 +9,8 @@ git push
 
 //comando para descargar cambios
 git pull
+
+
+
+
+

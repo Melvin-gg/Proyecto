@@ -19,9 +19,9 @@ $id_usuario = $resultado['id'];
 include("conexion.php");
 
 // Consultar los mantenimientos por estado
-$sql_activo = "SELECT COUNT(*) as total FROM mantenimiento WHERE estado = 'Activo' AND id='$id_usuario'";
-$sql_finalizado = "SELECT COUNT(*) as total FROM mantenimiento WHERE estado = 'Finalizado' AND id='$id_usuario'";
-$sql_proceso = "SELECT COUNT(*) as total FROM mantenimiento WHERE estado = 'Proceso' AND id='$id_usuario'";
+$sql_activo = "SELECT COUNT(*) as total FROM mantenimiento WHERE estado = 'Activo' AND id_usuario='$id_usuario'";
+$sql_finalizado = "SELECT COUNT(*) as total FROM mantenimiento WHERE estado = 'Finalizado' AND id_usuario='$id_usuario'";
+$sql_proceso = "SELECT COUNT(*) as total FROM mantenimiento WHERE estado = 'Proceso' AND id_usuario='$id_usuario'";
 
 // Ejecutar las consultas
 $result_activo = mysqli_query($db, $sql_activo);
@@ -61,6 +61,10 @@ $proceso = mysqli_fetch_assoc($result_proceso)['total'];
             <a class="navbar-brand nav-link" href="mantenimiento/crearMantenimiento.php"> CREAR MANTENIMIENTO
             </a>
           </li>
+          <li class="nav-item">
+            <a class="navbar-brand nav-link" href="mantenimiento/verMantenimiento.php"> VER MANTENIMIENTOS
+            </a>
+          </li>
 
           <!-- <li class="nav-item">
               <a class="navbar-brand nav-link" href="historial.php">HISTORIAL</a>
@@ -74,7 +78,6 @@ $proceso = mysqli_fetch_assoc($result_proceso)['total'];
     </div>
   </nav>
   <h1>Gráfico de Estados de Mantenimientos</h1>
-
   <!-- Canvas donde se dibuja el gráfico -->
   <canvas id="estadoMantenimientosChart" width="400" height="200"></canvas>
 

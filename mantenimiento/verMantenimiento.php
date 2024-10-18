@@ -69,6 +69,7 @@ $id_usuario = $resultado['id'];
           <li class="nav-item"><a class=" navbar-brand nav-link"><i>BIENVENIDO: <?php echo $administrador  ?></i></a></li>
           </li>
           <li class="nav-item"><a class=" navbar-brand nav-link" href="../mantenimiento/crearMantenimiento.php"><i class="material-icons">REGRESAR</i></a></li>
+          <li class="nav-item"><a class=" navbar-brand nav-link" href="../usuarios.php"><i class="material-icons">REGRESAR INICIO</i></a></li>
           <li class="nav-item"><a class=" navbar-brand nav-link" href="../finalizar.php"><i class="material-icons">SALIR exit_to_app</i></a>
           </li>
         </ul>
