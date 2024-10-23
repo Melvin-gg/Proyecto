@@ -8,40 +8,40 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="css/estilo.css">
-  <title>inicio de sesion</title>
+  <title>Inicio de Sesión</title>
 </head>
 
 <body>
 
   <header>
-    <nav class="nabvar navbar-expand-lg navbar navbar-dark bg-primary">
-      <a href="../Proyecto/index.html" class="navbar-text text-light font-weight-bold"> <i class="material-icons">MANTENIMIENTO
-      brightness_7</i>
-</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a href="../Proyecto/index.html" class="navbar-brand text-light font-weight-bold"> 
+        <i class="material-icons">brightness_7</i> MANTENIMIENTO
+      </a>
     </nav>
   </header>
 
   <div class="container pt-4">
-
     <div class="row justify-content-center">
-      <div class="col-6">
+      <div class="col-lg-6 col-md-8 col-sm-10">
         <div class="card">
           <img src="img/logo.jpg" class="card-img-top" alt="logo">
           <div class="card-body">
             <!--comienzo de formulario -->
             <form action="login.php" method="post">
               <div class="form-group">
-                <input type="email" name="correo" class="form-control" placeholder="Correo">
+                <input type="email" name="correo" class="form-control" placeholder="Correo" required>
               </div>
 
               <div class="form-group">
-                <input type="password" name="clave" class="form-control" placeholder="Contraseña">
+                <input type="password" name="clave" class="form-control" placeholder="Contraseña" required>
               </div>
+
               <div class="form-group">
                 <button type="submit" class="btn btn-success btn-block">
-                  Iniciar Sesion
+                  Iniciar Sesión
                 </button>
+              </div>
             </form>
             <!-- fin del formulario-->
           </div>
@@ -50,12 +50,16 @@
     </div>
   </div>
 
-  <footer id="pie" class="py-4  bg-primary page-footer text-white-50">
-    <div class="container text-center">
-      <small>MIL FLORES &copy; S.A </small>
+  <footer class="py-4 bg-primary text-white-50 text-center">
+    <div class="container">
+      <small>&copy; MIL FLORES S.A.</small>
     </div>
   </footer>
 
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 </body>
 

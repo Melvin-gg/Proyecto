@@ -2,14 +2,13 @@
 include("../conexion.php");
 session_start();
 
-if (isset($_SESSION['u_usuario'])) {
-} else {
+if (!isset($_SESSION['u_usuario'])) {
   header("location: ../index.html");
+  exit;
 }
-?>
-<?php
+
 $usuario = $_SESSION['u_usuario'];
-$proceso = mysqli_query($db, "SELECT * FROM usuarios WHERE correo='$usuario'  ");
+$proceso = mysqli_query($db, "SELECT * FROM usuarios WHERE correo='$usuario'");
 $resultado = mysqli_fetch_array($proceso);
 $administrador = $resultado['nombre'];
 $id_usuario = $resultado['id'];
@@ -22,87 +21,56 @@ $id_usuario = $resultado['id'];
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <title>Creación Usuarios</title>
-
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Creación de Usuarios</title>
   <style>
     img:hover {
       height: 130px;
       border-radius: 70px;
     }
   </style>
-  <script>
-    function filterTable() {
-      let input = document.getElementById("searchInput");
-      let filter = input.value.toLowerCase();
-      let table = document.getElementById("userTable");
-      let tr = table.getElementsByTagName("tr");
-
-      for (let i = 1; i < tr.length; i++) {
-        let td = tr[i].getElementsByTagName("td")[2]; // La columna del nombre es la tercera (índice 2)
-        if (td) {
-          let txtValue = td.textContent || td.innerText;
-          if (txtValue.toLowerCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
-        }
-      }
-    }
-  </script>
-
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md navbar-dark  bg-dark ">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container">
-      <div class=" collapse navbar-collapse" id="navegar">
-        <ul class="navbar nav  ml-auto">
-          <li class="nav-item">
-            <a class="navbar-brand nav-link " href="principal.php">
-            </a>
-          </li>
-          <li class="nav-item"><a class=" navbar-brand nav-link"><i>BIENVENIDO: <?php echo $administrador  ?></i></a></li>
-          </li>
-          <li class="nav-item">
-            <a class=" navbar-brand nav-link" href="../mantenimiento/verMantenimiento.php">
-              VER MANTENIMIENTO 
-            </a>
-          </li>
-          <li class="nav-item"><a class=" navbar-brand nav-link" href="../usuarios.php"><i class="material-icons">REGRESAR</i></a></li>
-          <li class="nav-item"><a class=" navbar-brand nav-link" href="../finalizar.php"><i class="material-icons">SALIR exit_to_app</i></a>
-          </li>
+      <a class="navbar-brand" href="principal.php">Mantenimiento</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link"><i>BIENVENIDO: <?php echo $administrador; ?></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="../mantenimiento/verMantenimiento.php">VER MANTENIMIENTO</a></li>
+          <li class="nav-item"><a class="nav-link" href="../usuarios.php"><i class="material-icons">REGRESAR</i></a></li>
+          <li class="nav-item"><a class="nav-link" href="../finalizar.php"><i class="material-icons">SALIR</i></a></li>
         </ul>
       </div>
-
-
     </div>
   </nav>
+
+  <!-- Contenido principal -->
   <div class="container pt-4">
-
-    <div class="row">
-
-
-      <div class="col-8 ">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
         <div class="card border-secondary">
           <div class="card-body">
-
+            <h4 class="card-title text-center">Creación de Mantenimiento</h4>
             <form action="insertar_Mantenimiento.php" method="POST" autocomplete="off">
               <div class="form-group">
-              <label>Selecciona nombre de maquinaria </label> <br>
-              <select name="nombre_equipo" id="nombre_equipo" required>
-                <?php
-                // Generar opciones dinámicas desde la consulta
+                <label>Selecciona nombre de maquinaria</label>
+                <select name="nombre_equipo" id="nombre_equipo" class="form-control" required>
+                  <?php
+                  // Generar opciones dinámicas desde la consulta
                   $mostrar = mysqli_query($db, "SELECT * FROM maquinarias");
                   while ($registro = mysqli_fetch_array($mostrar)) {
                     echo "<option value='" . $registro['nombre'] . "'>" . $registro['nombre'] . "</option>";
                   }
-                ?>
-              </select>
+                  ?>
+                </select>
               </div>
               <div class="form-group">
                 <input type="text" class="form-control" name="descripcion" placeholder="Descripción" required>
@@ -111,59 +79,55 @@ $id_usuario = $resultado['id'];
                 <input type="text" class="form-control" name="Frecuencia" placeholder="Frecuencia" required>
               </div>
               <div class="form-group">
-                <label>Fecha de Inicio </label> <br>
-                <input type="date" class="form-control" name="fecha_inicio"  required>
+                <label>Fecha de Inicio</label>
+                <input type="date" class="form-control" name="fecha_inicio" required>
               </div>
               <div class="form-group">
-                <label>Fecha de Fin </label> <br>
-                <input type="date" class="form-control" name="fecha_fin"  required>
+                <label>Fecha de Fin</label>
+                <input type="date" class="form-control" name="fecha_fin" required>
               </div>
               <div class="form-group">
-                <label>Fecha Siguiente Mantenimiento</label> <br>
-                <input type="date" class="form-control" name="fecha_sig_mant"  >
+                <label>Fecha Siguiente Mantenimiento</label>
+                <input type="date" class="form-control" name="fecha_sig_mant">
               </div>
               <div class="form-group">
-              <label>Reprogramación </label> <br>
-                <select class="form-select" aria-label="Default select example" name="reprogramacion">
-                  <option value="Si">Si</option>
+                <label>Reprogramación</label>
+                <select class="form-control" name="reprogramacion">
+                  <option value="Si">Sí</option>
                   <option value="No">No</option>
                 </select>
               </div>
               <div class="form-group">
-              <label>Estado </label> <br>
-                <select class="form-select" aria-label="Default select example" name="estado">
+                <label>Estado</label>
+                <select class="form-control" name="estado">
                   <option value="Activo">Activo</option>
                   <option value="Proceso">Proceso</option>
                   <option value="Finalizado">Finalizado</option>
                 </select>
               </div>
               <div class="form-group">
-                <input type="int" class="form-control" name="horas_invertidas" placeholder="Horas Invertidas" required>
+                <input type="number" class="form-control" name="horas_invertidas" placeholder="Horas Invertidas" required>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="comentario" placeholder="Comentario" >
+                <input type="text" class="form-control" name="comentario" placeholder="Comentario">
               </div>
-              <div  class="form-group">
-                <input type="number"  class="form-control"  name="id_usuario" value="<?php echo   $id_usuario ;?>"  placeholder="id_usuario" readonly >
+              <div class="form-group">
+                <input type="hidden" class="form-control" name="id_usuario" value="<?php echo $id_usuario; ?>" readonly>
               </div>
               <div class="form-group">
                 <button type="submit" class="btn btn-secondary btn-block"><i class="material-icons">CREAR</i></button>
               </div>
             </form>
           </div>
-
         </div>
-
       </div>
-
-      
-
     </div>
-
-
-
   </div>
 
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 
