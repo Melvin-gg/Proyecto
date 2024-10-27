@@ -63,9 +63,12 @@ $administrador = $resultado['nombre'];
                         <div class="form-group">
                             <label for="tipo">Tipo de maquinaria:</label>
                             <select class="form-control" name="tipo" required>
-                                <option value="Soldadura">Soldadura</option>
-                                <option value="Corte">Corte</option>
-                                <option value="Proceso Semilla">Proceso Semilla</option>
+                                <option value="Soldadura">Agricola</option>
+                                <option value="Corte">Industrial</option>
+                                <option value="Proceso Semilla">Proceso de Semilla</option>
+                                <option value="Proceso Semilla">Mantenimiento de Cultivos</option>
+                                <option value="Proceso Semilla">Transporte</option>
+                                <option value="Proceso Semilla">Generacion de Energia</option>
                             </select>
                         </div>
                         <div class="form-group">

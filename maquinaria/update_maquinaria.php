@@ -57,9 +57,12 @@ if (!isset($_SESSION['u_usuario'])) {
                                 </div>
                                 <div class="form-group">
                                     <select class="form-select form-control" name="tipo" required>
-                                        <option value="Soldadura" <?php if ($registro['tipo'] == 'Soldadura') echo 'selected'; ?>>Soldadura</option>
-                                        <option value="Corte" <?php if ($registro['tipo'] == 'Corte') echo 'selected'; ?>>Corte</option>
+                                        <option value="Agricola" <?php if ($registro['tipo'] == 'Agricola') echo 'selected'; ?>>Agricola</option>
+                                        <option value="Industrial" <?php if ($registro['tipo'] == 'Industrial') echo 'selected'; ?>>Industrial</option>
                                         <option value="Proceso Semilla" <?php if ($registro['tipo'] == 'Proceso Semilla') echo 'selected'; ?>>Proceso Semilla</option>
+                                        <option value="Mantenimiento de Cultivos" <?php if ($registro['tipo'] == 'Mantenimiento de Cultivos') echo 'selected'; ?>>Mantenimiento de Cultivos</option>
+                                        <option value="Transporte" <?php if ($registro['tipo'] == 'Transporte') echo 'selected'; ?>>Transporte</option>
+                                        <option value="Generacion de Energia" <?php if ($registro['tipo'] == 'Generacion de Energia') echo 'selected'; ?>>Generacion de Energia</option>
                                     </select>
                                 </div>
                                 <div class="form-group">

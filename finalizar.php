@@ -5,5 +5,4 @@ session_destroy();
 
 header ("location: ../Proyecto/index.html");
 
-
   ?>

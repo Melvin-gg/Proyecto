@@ -1,5 +1,5 @@
 <?php
-//eliminar un registro de la tabla venta
+//eliminar un registro de la tabla mantenimiento
 include ("../conexion.php");
 
 $id=$_GET['id'];
