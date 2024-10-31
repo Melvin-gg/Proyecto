@@ -2,7 +2,7 @@
 $host="localhost";
 $basedatos="proyecto5";
 $usuario="root";
-$contrasena="root";
+$contrasena="";
 
 $db= new mysqli( $host , $usuario , $contrasena, $basedatos );
 
