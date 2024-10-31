@@ -1,4 +1,5 @@
 <?php
+session_destroy();
 session_start();
 include("conexion.php");
 
@@ -18,12 +19,14 @@ if($resultado=mysqli_fetch_array($query)){
     values ('$id_usuario', NOW(), '$nombre_usuario', 1 )";
     $mensaje = $db->query($sql);
     $_SESSION['u_usuario'] = $correo;
+    $_SESSION['rol'] = $resultado['tipo_usuario'];
     header("location: ../Proyecto/administrador.php");
   } else {
     $sql = "INSERT INTO historial_sesiones ( id_usuario, fecha_hora, nombre, exito )
     values ('$id_usuario', NOW(), '$nombre_usuario', 1 )";
     $mensaje = $db->query($sql);
     $_SESSION['u_usuario'] = $correo;
+    $_SESSION['rol'] = $resultado['tipo_usuario'];
     header("location: ../Proyecto/usuarios.php");
   }
 }

@@ -2,6 +2,9 @@
 include ("../conexion.php");
 session_start();
 
+include('verificaRol.php');
+// Solo permite el acceso a administradores
+verificarRol('Admin');
 if(!isset($_SESSION['u_usuario'])){
   header("location: ../index.html");
   exit();
