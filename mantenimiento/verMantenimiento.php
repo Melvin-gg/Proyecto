@@ -60,7 +60,7 @@ $id_usuario = $resultado['id'];
   <!-- Navbar -->
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="principal.php">Mantenimientos</a>
+      <a class="navbar-brand" href="../usuarios.php">Mantenimientos</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
